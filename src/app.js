@@ -1,6 +1,3 @@
-// const button = document.querySelector("button");
-// const input1 = document.getElementById("num1")! as HTMLInputElement;
-// const input2 = document.getElementById("num2")! as HTMLInputElement;
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -16,13 +13,16 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-// function add(num1: number, num2: number) {
-//   return num1 + num2;
-// }
-// button?.addEventListener("click", function () {
-//   console.log(add(+input1.value, +input2.value));
-// });
-// ==========================================
+var button = document.querySelector("button");
+var input1 = document.getElementById("num1");
+var input2 = document.getElementById("num2");
+function add(num1, num2) {
+    return num1 + num2;
+}
+button === null || button === void 0 ? void 0 : button.addEventListener("click", function () {
+    console.log(add(+input1.value, +input2.value));
+});
+// ==================Lesson 2========================
 // let age: number;
 // age = 50;
 // let name: string;
@@ -53,60 +53,52 @@ var __extends = (this && this.__extends) || (function () {
 // let person: [string, number];
 // person = ["Max", 21];
 // ==========================================
-// enum StatusLoading {
-//   LOADING,
-//   READY,
-// }
-// const page = {
-//   status: StatusLoading.LOADING,
-// };
-// if (page.status === StatusLoading.LOADING) {
-//   console.log("Loading");
-// }
-// if (page.status === StatusLoading.READY) {
-//   console.log("Ready");
-// }
+var StatusLoading;
+(function (StatusLoading) {
+    StatusLoading[StatusLoading["LOADING"] = 0] = "LOADING";
+    StatusLoading[StatusLoading["READY"] = 1] = "READY";
+})(StatusLoading || (StatusLoading = {}));
+var page = {
+    status: StatusLoading.LOADING
+};
+if (page.status === StatusLoading.LOADING) {
+    console.log("Loading");
+}
+if (page.status === StatusLoading.READY) {
+    console.log("Ready");
+}
 // ==========================================
 // let arg: string | number;
 // let arg2: "enable" | "disable";
 // ==========================================
-// function showMessage(message: string): void {
-//   console.log(message);
-// }
-// function calc(num1: number, num2: number): number {
-//   return num1 + num2;
-// }
-// function customError(): never {
-//   throw new Error("Error");
-// }
-// ==========================================
-// const Page: {
-//   title: string;
-//   likes: number;
-//   accounts: string[];
-//   status: "open" | "close";
-//   details?: {
-//     createAt: string;
-//     updateAt: string;
-//   };
-// };
-// const page1 = {
-//   title: "The awesome page",
-//   likes: 100,
-//   accounts: ["Max", "Anton", "Nikita"],
-//   status: "open",
-//   details: {
-//     createAt: "2021-01-01",
-//     updateAt: "2021-05-01",
-//   },
-// };
-// const page2 = {
-//   title: "Python or Js",
-//   likes: 5,
-//   accounts: ["Alex"],
-//   status: "close",
-// };
-// ==========================================
+function showMessage(message) {
+    console.log(message);
+}
+function calc(num1, num2) {
+    return num1 + num2;
+}
+function customError() {
+    throw new Error("Error");
+}
+// ===================Lesson 3=======================
+var Page;
+var page1 = {
+    title: "The awesome page",
+    likes: 100,
+    accounts: ["Max", "Anton", "Nikita"],
+    status: "open",
+    details: {
+        createAt: "2021-01-01",
+        updateAt: "2021-05-01"
+    }
+};
+var page2 = {
+    title: "Python or Js",
+    likes: 5,
+    accounts: ["Alex"],
+    status: "close"
+};
+// ==================Lesson 4========================
 var House = /** @class */ (function () {
     function House(key) {
         this.key = key;
@@ -157,3 +149,43 @@ var house = new MyHouse(key);
 var person = new Person(key);
 house.openDoor(person.getKey());
 house.comeIn(person);
+// ================Lesson 5==========================
+// type T = string | number;
+// type array1 = T[];
+function getPromise() {
+    return new Promise(function (resolve) {
+        resolve(["Text", 50]);
+    });
+}
+getPromise().then(function (data) {
+    console.log(data);
+});
+function compare(top, bottom) {
+    return {
+        name: top.name,
+        color: top.color,
+        position: bottom.position,
+        weight: bottom.weight
+    };
+}
+// =======================================================
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
+}
+// =======================================================
+var Component = /** @class */ (function () {
+    function Component(props) {
+        this.props = props;
+    }
+    return Component;
+}());
+var Page2 = /** @class */ (function (_super) {
+    __extends(Page2, _super);
+    function Page2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Page2.prototype.pageInfo = function () {
+        console.log(this.props.title);
+    };
+    return Page2;
+}(Component));

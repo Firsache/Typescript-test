@@ -1,15 +1,15 @@
-// const button = document.querySelector("button");
-// const input1 = document.getElementById("num1")! as HTMLInputElement;
-// const input2 = document.getElementById("num2")! as HTMLInputElement;
+const button = document.querySelector("button");
+const input1 = document.getElementById("num1")! as HTMLInputElement;
+const input2 = document.getElementById("num2")! as HTMLInputElement;
 
-// function add(num1: number, num2: number) {
-//   return num1 + num2;
-// }
+function add(num1: number, num2: number) {
+  return num1 + num2;
+}
 
-// button?.addEventListener("click", function () {
-//   console.log(add(+input1.value, +input2.value));
-// });
-// ==========================================
+button?.addEventListener("click", function () {
+  console.log(add(+input1.value, +input2.value));
+});
+// ==================Lesson 2========================
 
 // let age: number;
 // age = 50;
@@ -51,21 +51,21 @@
 
 // ==========================================
 
-// enum StatusLoading {
-//   LOADING,
-//   READY,
-// }
-// const page = {
-//   status: StatusLoading.LOADING,
-// };
+enum StatusLoading {
+  LOADING,
+  READY,
+}
+const page = {
+  status: StatusLoading.LOADING,
+};
 
-// if (page.status === StatusLoading.LOADING) {
-//   console.log("Loading");
-// }
+if (page.status === StatusLoading.LOADING) {
+  console.log("Loading");
+}
 
-// if (page.status === StatusLoading.READY) {
-//   console.log("Ready");
-// }
+if (page.status === StatusLoading.READY) {
+  console.log("Ready");
+}
 
 // ==========================================
 
@@ -73,47 +73,47 @@
 // let arg2: "enable" | "disable";
 // ==========================================
 
-// function showMessage(message: string): void {
-//   console.log(message);
-// }
+function showMessage(message: string): void {
+  console.log(message);
+}
 
-// function calc(num1: number, num2: number): number {
-//   return num1 + num2;
-// }
+function calc(num1: number, num2: number): number {
+  return num1 + num2;
+}
 
-// function customError(): never {
-//   throw new Error("Error");
-// }
-// ==========================================
+function customError(): never {
+  throw new Error("Error");
+}
+// ===================Lesson 3=======================
 
-// const Page: {
-//   title: string;
-//   likes: number;
-//   accounts: string[];
-//   status: "open" | "close";
-//   details?: {
-//     createAt: string;
-//     updateAt: string;
-//   };
-// };
-// const page1 = {
-//   title: "The awesome page",
-//   likes: 100,
-//   accounts: ["Max", "Anton", "Nikita"],
-//   status: "open",
-//   details: {
-//     createAt: "2021-01-01",
-//     updateAt: "2021-05-01",
-//   },
-// };
+const Page: {
+  title: string;
+  likes: number;
+  accounts: string[];
+  status: "open" | "close";
+  details?: {
+    createAt: string;
+    updateAt: string;
+  };
+};
+const page1 = {
+  title: "The awesome page",
+  likes: 100,
+  accounts: ["Max", "Anton", "Nikita"],
+  status: "open",
+  details: {
+    createAt: "2021-01-01",
+    updateAt: "2021-05-01",
+  },
+};
 
-// const page2 = {
-//   title: "Python or Js",
-//   likes: 5,
-//   accounts: ["Alex"],
-//   status: "close",
-// };
-// ==========================================
+const page2 = {
+  title: "Python or Js",
+  likes: 5,
+  accounts: ["Alex"],
+  status: "close",
+};
+// ==================Lesson 4========================
 abstract class House {
   protected door = false;
   private tenants: Person[] = [];
@@ -159,3 +159,54 @@ const person = new Person(key);
 
 house.openDoor(person.getKey());
 house.comeIn(person);
+
+// ================Lesson 5==========================
+// type T = string | number;
+// type array1 = T[];
+
+function getPromise(): Promise<Array<string | number>> {
+  return new Promise((resolve) => {
+    resolve(["Text", 50]);
+  });
+}
+
+getPromise().then((data) => {
+  console.log(data);
+});
+
+// =======================================================
+type AllType = {
+  name: string;
+  position: number;
+  color: string;
+  weight: number;
+};
+
+function compare(
+  top: Pick<AllType, "name" | "color">,
+  bottom: Pick<AllType, "position" | "weight">
+): AllType {
+  return {
+    name: top.name,
+    color: top.color,
+    position: bottom.position,
+    weight: bottom.weight,
+  };
+}
+// =======================================================
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+  return Object.assign(objA, objB);
+}
+// =======================================================
+
+class Component<T> {
+  constructor(public props: T) {}
+}
+interface IProps {
+  title: string;
+}
+class Page2 extends Component<IProps> {
+  pageInfo() {
+    console.log(this.props.title);
+  }
+}
